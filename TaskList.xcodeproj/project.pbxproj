@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872C944029322D4600983B99 /* Extension + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C943F29322D4600983B99 /* Extension + Alert.swift */; };
 		8752222C29293D4A00BB72BC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8752222B29293D4A00BB72BC /* StorageManager.swift */; };
 		A8580EDE2926A14400480465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8580EDD2926A14400480465 /* AppDelegate.swift */; };
 		A8580EE02926A14400480465 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8580EDF2926A14400480465 /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		872C943F29322D4600983B99 /* Extension + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Alert.swift"; sourceTree = "<group>"; };
 		8752222B29293D4A00BB72BC /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A8580EDA2926A14400480465 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8580EDD2926A14400480465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				A8580EDF2926A14400480465 /* SceneDelegate.swift */,
 				A8580EE12926A14400480465 /* TaskListViewController.swift */,
 				8752222B29293D4A00BB72BC /* StorageManager.swift */,
+				872C943F29322D4600983B99 /* Extension + Alert.swift */,
 				A8580EE92926A14500480465 /* Assets.xcassets */,
 				A8580EEB2926A14500480465 /* LaunchScreen.storyboard */,
 				A8580EEE2926A14500480465 /* Info.plist */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				872C944029322D4600983B99 /* Extension + Alert.swift in Sources */,
 				A8580EE82926A14400480465 /* TaskList.xcdatamodeld in Sources */,
 				A8580EE22926A14400480465 /* TaskListViewController.swift in Sources */,
 				8752222C29293D4A00BB72BC /* StorageManager.swift in Sources */,

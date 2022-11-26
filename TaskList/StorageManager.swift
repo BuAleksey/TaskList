@@ -10,6 +10,10 @@ import CoreData
 final class StorageManager {
     static let shared = StorageManager()
     
+    var context: NSManagedObjectContext {
+        persistentContainer.viewContext
+    }
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TaskList")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -22,52 +26,41 @@ final class StorageManager {
     
     private init() {}
     
-    func fetchData() -> [Task] {
+    func fetchData(complition: (Result<[Task], Error>) -> Void) {
         let fetchRequest = Task.fetchRequest()
-        var taskList: [Task] = []
         do {
-            taskList = try persistentContainer.viewContext.fetch(fetchRequest)
+            let taskList = try context.fetch(fetchRequest)
+            complition(.success(taskList))
         } catch let error {
             print(error.localizedDescription)
+            complition(.failure(error))
         }
-        return taskList
+    }
+    
+    func save(_ taskTitle: String, complition: (Result<Task, Error>) -> Void) {
+        let task = Task(context: context)
+        task.title = taskTitle
+        complition(.success(task))
+        saveContext()
+    }
+    
+    func update(_ task: Task, newTitle: String) {
+        task.title = newTitle
+        saveContext()
+    }
+    
+    func delete(_ task: Task) {
+        context.delete(task)
+        saveContext()
     }
     
     func saveContext() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
-    func save(in taskList: inout [Task], taskName: String) {
-        let task = Task(context: persistentContainer.viewContext)
-        task.title = taskName
-        taskList.append(task)
-        
-        if persistentContainer.viewContext.hasChanges {
-            do {
-                try persistentContainer.viewContext.save()
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func delete(in taskList: inout [Task], with index: Int) {
-        let task = taskList.remove(at: index)
-        persistentContainer.viewContext.delete(task)
-        
-        if persistentContainer.viewContext.hasChanges {
-            do {
-                try persistentContainer.viewContext.save()
-            } catch let error {
-                print(error.localizedDescription)
             }
         }
     }
